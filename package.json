@@ -1,0 +1,20 @@
+{
+  "name": "saber-mm",
+  "version": "0.1.0",
+  "description": "MVP framework",
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "repository": "git://github.com/ecomfe/saber-mm.git",
+  "bugs": "https://github.com/ecomfe/saber-mm/issues",
+  "dependencies": {
+    "saber-lang": "~1.0.0",
+    "saber-dom": "~1.0.0",
+    "saber-uri": "~1.0.1"
+  },
+  "license": "ISC"
+}
