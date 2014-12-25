@@ -85,13 +85,14 @@ define(function (require) {
      * @param {string} path 当前的访问路径
      * @param {Object} query 查询条件
      * @param {string} url 原始URL
-     * @param {Object=} options 跳转参数
+     * @param {Object=} options 附加数据
      */
     Presenter.prototype.enter = function (main, path, query, url, options) {
         this.path = path;
-        this.options = extend({}, options);
 
+        this.model.fill(options);
         this.view.setMain(main);
+
         this.emit('enter');
 
         return this.model.fetch(url, query)
@@ -105,12 +106,13 @@ define(function (require) {
      * @param {string} path 当前的访问地址
      * @param {Object} query 查询条件
      * @param {string} url 原始URL
-     * @param {Object} options 跳转参数
+     * @param {Object} options 附加数据
      * @return {Promise}
      */
     Presenter.prototype.wakeup = function (path, query, url, options) {
         this.path = path;
-        this.options = extend({}, options);
+
+        this.model.fill(options);
 
         this.emit('wakeup');
 
@@ -120,15 +122,13 @@ define(function (require) {
 
     /**
      * 页面就绪
-     * 完成页面渲染转场后触发
-     * 进行事件注册
+     * 进行DOM事件注册
      *
      * @public
-     * @param {boolean} isFirst 是否时首屏渲染
      */
-    Presenter.prototype.ready = function (isFirst) {
-        this.emit('ready', isFirst);
-        this.view.ready(isFirst);
+    Presenter.prototype.ready = function () {
+        this.emit('ready');
+        this.view.ready();
     };
 
     /**

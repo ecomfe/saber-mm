@@ -27,7 +27,7 @@ define(function (require) {
      * @public
      * @param {*} data
      */
-    Model.prototype.fulfill = function () {};
+    Model.prototype.fill = function () {};
 
     /**
      * 获取数据
@@ -38,19 +38,6 @@ define(function (require) {
      * @return {Promise}
      */
     Model.prototype.fetch = function (url, query) {
-        return Resolver.resolved(query);
-    };
-
-    /**
-     * 重新获取数据
-     * 在被缓存的action被wakeup时调用
-     *
-     * @public
-     * @param {string} url
-     * @param {Object} query 查询条件
-     * @return {Promise}
-     */
-    Model.prototype.refetch = function (url, query) {
         return Resolver.resolved(query);
     };
 
