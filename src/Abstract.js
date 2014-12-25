@@ -58,6 +58,7 @@ define(function (require) {
      */
     Abstract.prototype.init = function () {
         bindEvents(this);
+        this.emit('init');
     };
 
     /**

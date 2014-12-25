@@ -24,7 +24,6 @@ define(function (require) {
     function Presenter(options) {
         Abstract.call(this, options);
         this.init();
-        this.emit('init');
     }
 
     inherits(Presenter, Abstract);
