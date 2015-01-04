@@ -3,25 +3,27 @@
  * @author treelite(c.xinle@gmail.com)
  */
 
-define({
-    /**
-     * 预加载的模版
-     *
-     * @type {Array.<string>}
-     */
-    template: [],
+define(function (require) {
+    return {
+        /**
+         * 预加载的模版
+         *
+         * @type {Array.<string>}
+         */
+        template: [],
 
-    /**
-     * 模版引擎配置信息
-     *
-     * @type {Object}
-     */
-    templateConfig: {},
+        /**
+         * 模版引擎配置信息
+         *
+         * @type {Object}
+         */
+        templateConfig: {},
 
-    /**
-     * 路由器
-     *
-     * @type {!Object}
-     */
-    router: null
+        /**
+         * 路由器
+         *
+         * @type {Object}
+         */
+        router: require('./router')
+    };
 });

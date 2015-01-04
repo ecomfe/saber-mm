@@ -6,6 +6,7 @@
 define(function (require) {
 
     var Resolver = require('saber-promise');
+    var globalConfig = require('./config');
 
     function isString(value) {
         return Object.prototype.toString.call(value)
@@ -48,7 +49,7 @@ define(function (require) {
             Constructor = config.constructor;
         }
         else {
-            Constructor = require('./Presenter');
+            Constructor = globalConfig.Presenter || require('./Presenter');
         }
         return Resolver.resolved(new Constructor(config));
     }
@@ -64,7 +65,6 @@ define(function (require) {
      * @param {Object=} options.router 路由器
      */
     exports.config = function (options) {
-        var globalConfig = require('./config');
         var extend = require('saber-lang/extend');
         extend(globalConfig, options);
     };

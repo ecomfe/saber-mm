@@ -33,11 +33,24 @@ define(function (require) {
      * 获取数据
      *
      * @public
-     * @param {string} url
      * @param {Object} query
+     * @param {string} url
      * @return {Promise}
      */
-    Model.prototype.fetch = function (url, query) {
+    Model.prototype.fetch = function (query, url) {
+        return Resolver.resolved(query);
+    };
+
+    /**
+     * 重新获取数据
+     * 在被缓存的action被wakeup时调用
+     *
+     * @public
+     * @param {Object} query 查询条件
+     * @param {string} url
+     * @return {Promise}
+     */
+    Model.prototype.refetch = function (query, url) {
         return Resolver.resolved(query);
     };
 

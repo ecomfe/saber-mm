@@ -285,7 +285,7 @@ define(function (require) {
      * @param {Object=} options 跳转参数
      */
     View.prototype.redirect = function (url, query, options) {
-        var router = globalConfig.router || require('./router');
+        var router = globalConfig.router;
         router.redirect(url, query, options);
     };
 
