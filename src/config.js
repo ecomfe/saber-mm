@@ -24,6 +24,6 @@ define(function (require) {
          *
          * @type {Object}
          */
-        router: require('./router')
+        router: null
     };
 });

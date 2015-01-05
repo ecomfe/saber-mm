@@ -16,7 +16,6 @@
     "saber-promise": "~1.0.0",
     "saber-emitter": "~1.0.0",
     "saber-dom": "~1.0.0",
-    "saber-uri": "~1.0.1",
     "etpl": "~3.0.0"
   },
   "scripts": {
