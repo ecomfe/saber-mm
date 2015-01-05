@@ -9,6 +9,7 @@ define(function (require) {
     var extend = require('saber-lang/extend');
     var bind = require('saber-lang/bind');
     var Abstract = require('./Abstract');
+    var Resolver = require('saber-promise');
     var globalConfig = require('./config');
 
     /**
@@ -113,6 +114,8 @@ define(function (require) {
         this.options = extend({}, options);
 
         this.emit('wakeup');
+
+        return Resolver.resolved();
     };
 
     /**
