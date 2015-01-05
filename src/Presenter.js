@@ -88,7 +88,7 @@ define(function (require) {
     Presenter.prototype.enter = function (main, path, query, url, options) {
         this.path = path;
 
-        this.model.fill(options);
+        this.options = extend({}, options);
         this.view.setMain(main);
 
         this.emit('enter');
@@ -110,7 +110,7 @@ define(function (require) {
     Presenter.prototype.wakeup = function (path, query, url, options) {
         this.path = path;
 
-        this.model.fill(options);
+        this.options = extend({}, options);
 
         this.emit('wakeup');
 
