@@ -349,6 +349,9 @@ define(function (require) {
         });
         this.bindElements = [];
 
+        // 销毁页面的widget
+        require('saber-widget').dispose(this.main);
+
         // 解除元素引用
         this.main = null;
     };

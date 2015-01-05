@@ -9,6 +9,19 @@ define(function (require) {
     var Abstract = require('saber-mm/Abstract');
     var View = require('saber-mm/View');
 
+    var widget = require('saber-widget');
+    var Widget = require('saber-widget/Widget');
+
+    function Slider() {
+        Widget.apply(this, arguments);
+    }
+
+    Slider.prototype.type = 'Slider';
+
+    require('saber-lang/inherits')(Slider, Widget);
+
+    widget.register(Slider);
+
     function fireEvent(ele, type, proto) {
         var e = document.createEvent('Event');
         e.initEvent(type, true, true);
@@ -187,6 +200,26 @@ define(function (require) {
             }, 0);
 
         });
+
+        it('.dipose() should dipose all widget', function () {
+                var tpl = '<div class="slider"><div></div></div>';
+                var view = new View({
+                        main: main,
+                        template: tpl
+                    });
+
+                view.render();
+                var ele = view.query('.slider');
+                var widget = require('saber-widget');
+                var slider = widget.slider(ele, {id: 'slider'});
+
+                expect(widget.get('slider')).toBe(slider);
+
+                view.dispose();
+
+                expect(widget.get('slider')).toBeUndefined();
+                expect(slider.main).toBeNull();
+            });
 
     });
 
