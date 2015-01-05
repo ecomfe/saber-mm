@@ -113,9 +113,6 @@ define(function (require) {
         this.options = extend({}, options);
 
         this.emit('wakeup');
-
-        return this.model.refetch(query, url)
-            .then(bind(this.view.wakeup, this.view));
     };
 
     /**

@@ -383,22 +383,5 @@ define(function (require) {
         this.emit('sleep');
     };
 
-    /**
-     * 视图唤醒
-     *
-     * @public
-     * @param {Object} data
-     *
-     * @fires View#wakeup
-     */
-    View.prototype.wakeup = function (data) {
-        /**
-         * 视图唤醒事件
-         *
-         * @event
-         */
-        this.emit('wakeup', data);
-    };
-
     return View;
 });
