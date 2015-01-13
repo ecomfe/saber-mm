@@ -20,6 +20,13 @@ define(function (require) {
         templateConfig: {},
 
         /**
+         * 通用模版数据
+         *
+         * @type {Object}
+         */
+        templateData: {},
+
+        /**
          * 路由器
          *
          * @type {Object}

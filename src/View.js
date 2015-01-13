@@ -191,6 +191,9 @@ define(function (require) {
             this.main.className += ' ' + this.className;
         }
 
+        // 扩展通用模版数据
+        data = extend({}, globalConfig.templateData, data);
+
         /**
          * 渲染前事件
          *
