@@ -68,10 +68,10 @@ define(function (require) {
             expect(pass).toBeTruthy();
         });
 
-        it('.setMain(ele) should set main element', function () {
+        it('.set(ele) should set main element', function () {
             var view = new View();
 
-            view.setMain(main);
+            view.set(main);
 
             expect(view.main).toBe(main);
         });

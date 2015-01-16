@@ -45,7 +45,7 @@ define(function (require) {
         it('.enter() should set path and finish render', function (done) {
             var path = '/index';
             var query = {filter: 'www'};
-            var url = path + '?filter=www';
+            var params = {name: 'treelite'};
             var options = {noCache: true};
             var ele = document.createElement('div');
             var fn = jasmine.createSpy('fn');
@@ -55,17 +55,19 @@ define(function (require) {
                     }
                 });
 
+            spyOn(presenter.model, 'set').and.callThrough();
             spyOn(presenter.model, 'fetch').and.callThrough();
-            spyOn(presenter.view, 'setMain').and.callThrough();
+            spyOn(presenter.view, 'set').and.callThrough();
             spyOn(presenter.view, 'render').and.callThrough();
 
-            presenter.enter(ele, path, query, url, options).then(function () {
+            presenter.enter(ele, path, query, params, options).then(function () {
                 expect(presenter.path).toEqual(path);
                 expect(presenter.options).toEqual(options);
                 expect(presenter.options).not.toBe(options);
                 expect(fn.calls.count()).toBe(1);
-                expect(presenter.view.setMain).toHaveBeenCalledWith(ele);
-                expect(presenter.model.fetch).toHaveBeenCalledWith(query, url);
+                expect(presenter.view.set).toHaveBeenCalledWith(ele);
+                expect(presenter.model.set).toHaveBeenCalledWith(query, params, path);
+                expect(presenter.model.fetch).toHaveBeenCalled();
                 expect(presenter.view.render).toHaveBeenCalled();
                 done();
             });
