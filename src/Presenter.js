@@ -60,6 +60,16 @@ define(function (require) {
     };
 
     /**
+     * 数据设置
+     *
+     * @public
+     * @param {string} path 当前的路径
+     */
+    Presenter.prototype.set = function (path) {
+       this.path = path;
+    };
+
+    /**
      * 页面跳转
      *
      * @public
@@ -91,7 +101,7 @@ define(function (require) {
         this.path = path;
 
         this.options = extend({}, options);
-        this.view.setMain(main);
+        this.view.set(main);
 
         this.emit('enter');
 

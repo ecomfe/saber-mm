@@ -169,7 +169,7 @@ define(function (require) {
      * @public
      * @param {HTMLElement} ele 视图容器元素
      */
-    View.prototype.setMain = function (ele) {
+    View.prototype.set = function (ele) {
         this.main = ele;
     };
 
