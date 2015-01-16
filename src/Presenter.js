@@ -83,10 +83,11 @@ define(function (require) {
      * @param {HTMLElement} main 视图容器
      * @param {string} path 当前的访问路径
      * @param {Object} query 查询条件
-     * @param {string} url 原始URL
+     * @param {Object} params 路径参数
      * @param {Object=} options 附加数据
+     * @return {Promise}
      */
-    Presenter.prototype.enter = function (main, path, query, url, options) {
+    Presenter.prototype.enter = function (main, path, query, params, options) {
         this.path = path;
 
         this.options = extend({}, options);
@@ -94,8 +95,8 @@ define(function (require) {
 
         this.emit('enter');
 
-        return this.model.fetch(query, url)
-            .then(bind(this.view.render, this.view));
+        this.model.set(query, params, path);
+        return this.model.fetch().then(bind(this.view.render, this.view));
     };
 
     /**
@@ -104,11 +105,11 @@ define(function (require) {
      * @public
      * @param {string} path 当前的访问地址
      * @param {Object} query 查询条件
-     * @param {string} url 原始URL
+     * @param {Object} params 路径参数
      * @param {Object} options 附加数据
      * @return {Promise}
      */
-    Presenter.prototype.wakeup = function (path, query, url, options) {
+    Presenter.prototype.wakeup = function (path, query, params, options) {
         this.path = path;
 
         this.options = extend({}, options);
