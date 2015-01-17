@@ -1,6 +1,6 @@
 /**
  * @file Model
- * @param treelite(c.xinle@gmail.com)
+ * @author treelite(c.xinle@gmail.com)
  */
 
 define(function (require) {
@@ -14,6 +14,7 @@ define(function (require) {
      * Model
      *
      * @constructor
+     * @param {Object} options 参数
      */
     function Model(options) {
         Abstract.call(this, options);
@@ -26,12 +27,12 @@ define(function (require) {
      * 设置查询条件与路径参数
      *
      * @public
-     * @param {Object} query
-     * @param {Object=} params
+     * @param {Object=} query 查询条件
+     * @param {Object=} params 路径参数
      */
     Model.prototype.set = function (query, params) {
-        this.params = params || this.params;
         this.query = extend({}, params, query);
+        this.params = params || this.params;
     };
 
     /**

@@ -33,7 +33,6 @@ define(function (require) {
      * 判断是否由该插件来处理事件
      *
      * @public
-     * @param {string} type 事件类型
      * @return {boolean}
      */
     plugin.detect = function () {

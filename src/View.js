@@ -41,7 +41,7 @@ define(function (require) {
      * 绑定DOM事件
      *
      * @inner
-     * @param {View} view
+     * @param {View} view 视图对象
      */
     function bindDomEvents(view) {
         var type;
@@ -61,7 +61,7 @@ define(function (require) {
      * 编译模版
      *
      * @public
-     * @param {View} view
+     * @param {View} view 视图对象
      * @param {string|Array.<string>} str 模版
      */
     function compileTemplate(view, str) {
@@ -177,7 +177,7 @@ define(function (require) {
      * 渲染视图
      *
      * @public
-     * @param {Object} data
+     * @param {Object} data 模版数据
      *
      * @fires View#beforerender
      *        View#afterrender

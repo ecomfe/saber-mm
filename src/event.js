@@ -52,10 +52,10 @@ define(function (require) {
      * 判断元素是否是选择器指定的元素
      *
      * @inner
-     * @param {HTMLElement} target
-     * @param {string} selector
-     * @param {HTMLElement} main
-     * @return {HTMLElement}
+     * @param {HTMLElement} target 目标元素
+     * @param {string} selector css选择器
+     * @param {HTMLElement} main 主元素
+     * @return {boolean}
      */
     function matchElement(target, selector, main) {
         var res = false;
@@ -70,8 +70,8 @@ define(function (require) {
      * 获取事件处理函数
      *
      * @inner
-     * @param {EventHost} eventHost
-     * @param {Event} e
+     * @param {EventHost} eventHost 事件宿主
+     * @param {Event} e DOM事件参数
      * @return {Array}
      */
     function getHandlers(eventHost, e) {
@@ -102,7 +102,7 @@ define(function (require) {
      * 生成统一的事件处理函数
      *
      * @inner
-     * @param {EventHost} eventHost
+     * @param {EventHost} eventHost 事件宿主
      * @return {Function}
      */
     function createCommonEventHandler(eventHost) {
@@ -134,7 +134,7 @@ define(function (require) {
      * 然后再分别绑定事件
      *
      * @inner
-     * @param {EventHost} eventHost
+     * @param {EventHost} eventHost 事件宿主
      * @param {string} type 事件类型
      */
     function addEvent(eventHost, type) {
@@ -153,7 +153,7 @@ define(function (require) {
      * 移除事件绑定
      *
      * @inner
-     * @param {EventHost} eventHost
+     * @param {EventHost} eventHost 事件宿主
      * @param {string} type 事件类型
      */
     function removeEvent(eventHost, type) {
@@ -169,10 +169,10 @@ define(function (require) {
     }
 
     /**
-     * 混合事件参数
+     * 扩展事件参数
      *
      * @inner
-     * @param {Event} e
+     * @param {Event} e DOM事件参数
      * @return {Event}
      */
     function mixinEvent(e) {
@@ -194,7 +194,7 @@ define(function (require) {
      * 获取元素的uid
      *
      * @inner
-     * @param {HTMLElement} ele
+     * @param {HTMLElement} ele DOM元素
      * @return {number}
      */
     function getUID(ele) {
@@ -205,7 +205,7 @@ define(function (require) {
      * 创建元素的uid
      *
      * @inner
-     * @param {HTMLElement} ele
+     * @param {HTMLElement} ele DOM元素
      * @return {number}
      */
     function createUID(ele) {
@@ -218,7 +218,7 @@ define(function (require) {
      * 移除元素的uid
      *
      * @inner
-     * @param {HTMLElement} ele
+     * @param {HTMLElement} ele DOM元素
      */
     function removeUID(ele) {
         try {
@@ -231,6 +231,7 @@ define(function (require) {
      * EventHost
      *
      * @constructor
+     * @param {HTMLElement} ele DOM元素
      */
     function EventHost(ele) {
         this.uid = createUID(ele);
@@ -323,7 +324,7 @@ define(function (require) {
      * 根据元素生成EventHost对象
      *
      * @inner
-     * @param {HTMLElement} ele
+     * @param {HTMLElement} ele DOM元素
      * @return {EventHost}
      */
     function generateEventHost(ele) {
@@ -338,7 +339,7 @@ define(function (require) {
      * 获取元素对应的EventHost对象
      *
      * @inner
-     * @param {HTMLElement} ele
+     * @param {HTMLElement} ele DOM元素
      * @return {?EventHost}
      */
     function getEventHost(ele) {
@@ -424,7 +425,7 @@ define(function (require) {
      * 注册插件
      *
      * @public
-     * @param {Object} plugin
+     * @param {Object} plugin 插件
      */
     exports.register = function (plugin) {
         if (plugin.init) {

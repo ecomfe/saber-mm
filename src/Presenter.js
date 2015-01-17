@@ -66,7 +66,7 @@ define(function (require) {
      * @param {string} path 当前的路径
      */
     Presenter.prototype.set = function (path) {
-       this.path = path;
+        this.path = path;
     };
 
     /**

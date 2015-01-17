@@ -17,7 +17,7 @@ define(function (require) {
      * 异步创建Presenter
      *
      * @inner
-     * @param {string} moduleId
+     * @param {string} moduleId 模块ID
      * @return {Promise}
      */
     function createAsync(moduleId) {
@@ -36,7 +36,7 @@ define(function (require) {
      * 创建Presenter
      *
      * @inner
-     * @param {Object|string} config
+     * @param {Object|string} config 配置信息
      * @return {Promise}
      */
     function create(config) {
@@ -59,7 +59,7 @@ define(function (require) {
     /**
      * 配置
      *
-     * @param {Object} options
+     * @param {Object} options 配置信息
      * @param {string|Array.<string>=} options.template 公共模版
      * @param {Object=} options.templateConfig 模版配置信息
      * @param {Object=} options.router 路由器
