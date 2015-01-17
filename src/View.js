@@ -357,6 +357,8 @@ define(function (require) {
 
         // 解除元素引用
         this.main = null;
+
+        Abstract.prototype.dispose.call(this);
     };
 
     /**

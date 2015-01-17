@@ -13,6 +13,7 @@ define(function (require) {
      * 绑定事件
      *
      * @inner
+     * @param {Object} abs 对象
      */
     function bindEvents(abs) {
         var events = abs.events || {};
@@ -66,7 +67,10 @@ define(function (require) {
      *
      * @public
      */
-    Abstract.prototype.dispose = function () {};
+    Abstract.prototype.dispose = function () {
+        // 注销所有事件
+        this.off();
+    };
 
     return Abstract;
 

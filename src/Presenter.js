@@ -189,6 +189,7 @@ define(function (require) {
     Presenter.prototype.dispose = function () {
         this.view.dispose();
         this.model.dispose();
+        Abstract.prototype.dispose.call(this);
     };
 
     return Presenter;
