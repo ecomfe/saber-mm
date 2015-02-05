@@ -78,5 +78,11 @@ define(function (require) {
      */
     exports.create = create;
 
+    exports.Presenter = require('./Presenter');
+
+    exports.Model = require('./Model');
+
+    exports.View = require('./View');
+
     return exports;
 });
