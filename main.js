@@ -22,6 +22,8 @@ exports.create = function (config) {
     return new Constructor(config);
 };
 
+exports.Abstract = require('./lib/Abstract');
+
 exports.Presenter = require('./lib/Presenter');
 
 exports.Model = require('./lib/Model');
