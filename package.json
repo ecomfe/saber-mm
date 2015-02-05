@@ -29,6 +29,11 @@
   "dependencies": {
     "etpl": "^3.0.0",
     "saber-lang": "^1.0.0",
-    "saber-promise": "^1.0.0"
+    "saber-promise": "^1.0.0",
+    "saber-emitter": "^1.0.0"
+  },
+  "devDependencies": {
+    "c2a": "^0.2.0",
+    "jasmine-node": "^2.0.0-beta4"
   }
 }
