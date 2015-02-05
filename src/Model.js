@@ -24,15 +24,59 @@ define(function (require) {
     inherits(Model, Abstract);
 
     /**
-     * 设置查询条件与路径参数
+     * 初始化
      *
      * @public
-     * @param {Object=} query 查询条件
-     * @param {Object=} params 路径参数
      */
-    Model.prototype.set = function (query, params) {
-        this.query = extend({}, params, query);
-        this.params = params || this.params;
+    Model.prototype.init = function () {
+        // 实例化store
+        // **浅拷贝**
+        this.store = extend({}, this.store);
+
+        Abstract.prototype.init.call(this);
+    };
+
+    /**
+     * 设置数据
+     *
+     * @public
+     * @param {string} name 名称
+     * @param {*} value 值
+     */
+    Model.prototype.set = function (name, value) {
+        this.store[name] = value;
+    };
+
+    /**
+     * 获取数据
+     *
+     * @public
+     * @return {*} value
+     */
+    Model.prototype.get = function (name) {
+        return this.store[name];
+    };
+
+    /**
+     * 填充数据
+     *
+     * @public
+     * @param {Object} data 数据
+     */
+    Model.prototype.fill = function (data) {
+        this.store = extend(this.store, data);
+    };
+
+    /**
+     * 删除数据
+     *
+     * @public
+     * @return {*} 被删除的数据
+     */
+    Model.prototype.del = function (name) {
+        var data = this.store[name];
+        delete this.store[name];
+        return data;
     };
 
     /**
