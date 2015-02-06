@@ -1,13 +1,12 @@
-/**
- * @file Presenter
- * @author treelite(c.xinle@gmail.com)
- */
+define(function (require, exports, module) {
+    /**
+     * @file Presenter
+     * @author treelite(c.xinle@gmail.com)
+     */
 
-define(function (require) {
-
-    var inherits = require('saber-lang/inherits');
-    var extend = require('saber-lang/extend');
-    var bind = require('saber-lang/bind');
+    var inherits = require('saber-lang').inherits;
+    var extend = require('saber-lang').extend;
+    var bind = require('saber-lang').bind;
     var Abstract = require('./Abstract');
     var Resolver = require('saber-promise');
     var globalConfig = require('./config');
@@ -113,7 +112,6 @@ define(function (require) {
      * @public
      * @param {string} path 当前的访问地址
      * @param {Object} query 查询条件
-     * @param {Object} params 路径参数
      * @param {Object} options 附加数据
      * @return {Promise}
      */
@@ -190,5 +188,5 @@ define(function (require) {
         Abstract.prototype.dispose.call(this);
     };
 
-    return Presenter;
+    module.exports = Presenter;
 });

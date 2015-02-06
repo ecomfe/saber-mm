@@ -78,6 +78,8 @@ define(function (require) {
      */
     exports.create = create;
 
+    exports.Abstract = require('./Abstract');
+
     exports.Presenter = require('./Presenter');
 
     exports.Model = require('./Model');

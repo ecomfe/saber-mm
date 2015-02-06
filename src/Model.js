@@ -1,12 +1,11 @@
-/**
- * @file Model
- * @author treelite(c.xinle@gmail.com)
- */
+define(function (require, exports, module) {
+    /**
+     * @file Model
+     * @author treelite(c.xinle@gmail.com)
+     */
 
-define(function (require) {
-
-    var inherits = require('saber-lang/inherits');
-    var extend = require('saber-lang/extend');
+    var inherits = require('saber-lang').inherits;
+    var extend = require('saber-lang').extend;
     var Resolver = require('saber-promise');
     var Abstract = require('./Abstract');
 
@@ -51,7 +50,8 @@ define(function (require) {
      * 获取数据
      *
      * @public
-     * @return {*} value
+     * @param {string} name 数据名称
+     * @return {*}
      */
     Model.prototype.get = function (name) {
         return this.store[name];
@@ -71,6 +71,7 @@ define(function (require) {
      * 删除数据
      *
      * @public
+     * @param {string} name 数据名称
      * @return {*} 被删除的数据
      */
     Model.prototype.del = function (name) {
@@ -89,5 +90,5 @@ define(function (require) {
         return Resolver.resolved(this.query);
     };
 
-    return Model;
+    module.exports = Model;
 });

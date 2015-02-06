@@ -5,8 +5,8 @@
 
 define(function (require) {
 
-    var Abstract = require('saber-mm/Abstract');
-    var Presenter = require('saber-mm/Presenter');
+    var Abstract = require('saber-mm').Abstract;
+    var Presenter = require('saber-mm').Presenter;
 
     describe('Presenter', function () {
 
@@ -46,7 +46,7 @@ define(function (require) {
             var path = '/index';
             var query = {filter: 'www'};
             var options = {noCache: true};
-            var ele = document.createElement('div');
+            var ele = {};
             var fn = jasmine.createSpy('fn');
             var presenter = new Presenter({
                     events: {
