@@ -13,12 +13,8 @@ before_install:
   - git clone https://github.com/ecomfe/saber-widget.git test/dep/saber-widget/1.0.0
   - git clone https://github.com/ecomfe/saber-string.git test/dep/saber-string/1.0.0
   - git clone https://github.com/ecomfe/saber-uri.git test/dep/saber-uri/1.0.1
-  - mkdir test/dep/saber-lang
-  - ln -s node_modules/saber-lang test/dep/saber-lang/1.0.0
-  - mkdir test/dep/saber-promise
-  - ln -s node_modules/saber-promise test/dep/saber-promise/1.0.0
-  - mkdir test/dep/saber-emitter
-  - ln -s node_modules/saber-emitter test/dep/saber-emitter/1.0.0
-  - mkdir test/dep/etpl
-  - ln -s node_modules/etpl test/dep/etpl/3.0.0
+  - git clone https://github.com/ecomfe/saber-lang.git --branch=feature/isom test/dep/saber-lang/1.0.0
+  - git clone https://github.com/ecomfe/saber-promise.git --branch=feature/isom test/dep/saber-promise/1.0.0
+  - git clone https://github.com/ecomfe/saber-emitter.git --branch=feature/isom test/dep/saber-emitter/1.0.0
+  - git clone https://github.com/ecomfe/etpl.git test/dep/etpl/3.0.0
 install: true
