@@ -3,6 +3,7 @@ node_js:
   - 0.10
 before_install:
   - npm install phantomjs
+  - npm install jasmine-node@2.0.0-beta4
   - npm install etpl
   - npm install amder
   - git clone https://github.com/ecomfe/saber-lang.git --branch=feature/isom node_modules/saber-lang
