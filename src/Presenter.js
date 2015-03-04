@@ -9,7 +9,6 @@ define(function (require, exports, module) {
     var bind = require('saber-lang').bind;
     var Abstract = require('./Abstract');
     var Resolver = require('saber-promise');
-    var globalConfig = require('./config');
 
     /**
      * Presenter
@@ -34,14 +33,13 @@ define(function (require, exports, module) {
      */
     Presenter.prototype.init = function () {
         var Constructor;
-
         if (this.view
             && this.view.constructor !== Object
         ) {
             Constructor = this.view.constructor;
         }
         else {
-            Constructor = globalConfig.View || require('./View');
+            Constructor = require('./View');
         }
         this.view = new Constructor(this.view);
 
@@ -51,7 +49,7 @@ define(function (require, exports, module) {
             Constructor = this.model.constructor;
         }
         else {
-            Constructor = globalConfig.Model || require('./Model');
+            Constructor = require('./Model');
         }
         this.model = new Constructor(this.model);
 
@@ -77,9 +75,7 @@ define(function (require, exports, module) {
      * @param {Object=} options 跳转参数
      */
     Presenter.prototype.redirect = function (url, query, options) {
-        var router = globalConfig.router;
-
-        router.redirect(url, query, options);
+        this.router.redirect(url, query, options);
     };
 
     /**

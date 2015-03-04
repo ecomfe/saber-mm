@@ -8,7 +8,6 @@ define(function (require) {
     var inherits = require('saber-lang/inherits');
     var dom = require('saber-dom');
     var eventHelper = require('./event');
-    var globalConfig = require('./config');
 
     var Abstract = require('./AbstractView');
 
@@ -125,8 +124,7 @@ define(function (require) {
      * @param {Object=} options 跳转参数
      */
     View.prototype.redirect = function (url, query, options) {
-        var router = globalConfig.router;
-        router.redirect(url, query, options);
+        this.router.redirect(url, query, options);
     };
 
     /*

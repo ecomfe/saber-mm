@@ -4,21 +4,36 @@
  */
 
 var extend = require('saber-lang').extend;
-var globalConfig = require('./lib/config');
+var configMgr = require('./lib/config');
 
-exports.config = function (config) {
-   extend(globalConfig, config);
+/**
+ * 全局配置
+ *
+ * @param {Object} options 配置信息
+ * @param {string|Array.<string>=} options.template 公共模版
+ * @param {Object=} options.templateConfig 模版配置信息
+ * @param {Object=} options.router 路由器
+ */
+exports.config = function (options) {
+    configMgr.set(options);
 };
 
+/**
+ * 创建Presenter
+ *
+ * @inner
+ * @param {Object} config 配置信息
+ * @return {Object}
+ */
 exports.create = function (config) {
     var Constructor;
-    if (config && config.constructor !== Object) {
+    configMgr.normal(config);
+    if (config.constructor !== Object) {
         Constructor = config.constructor;
     }
     else {
-        Constructor = globalConfig.Presenter || require('./lib/Presenter');
+        Constructor = require('./lib/Presenter');
     }
-
     return new Constructor(config);
 };
 
