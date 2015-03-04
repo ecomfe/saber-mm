@@ -1,13 +1,12 @@
-/**
- * @file Abstract
- * @author treelite(c.xinle@gmail.com)
- */
-
-define(function (require) {
+define(function (require, exports, module) {
+    /**
+     * @file Abstract
+     * @author treelite(c.xinle@gmail.com)
+     */
 
     var Emitter = require('saber-emitter');
-    var extend = require('saber-lang/extend');
-    var bind = require('saber-lang/bind');
+    var extend = require('saber-lang').extend;
+    var bind = require('saber-lang').bind;
 
     /**
      * 绑定事件
@@ -72,6 +71,5 @@ define(function (require) {
         this.off();
     };
 
-    return Abstract;
-
+    module.exports = Abstract;
 });

@@ -5,8 +5,8 @@
 
 define(function (require) {
 
-    var Abstract = require('saber-mm/Abstract');
-    var Presenter = require('saber-mm/Presenter');
+    var Abstract = require('saber-mm').Abstract;
+    var Presenter = require('saber-mm').Presenter;
 
     describe('Presenter', function () {
 
@@ -45,9 +45,8 @@ define(function (require) {
         it('.enter() should set path and finish render', function (done) {
             var path = '/index';
             var query = {filter: 'www'};
-            var params = {name: 'treelite'};
             var options = {noCache: true};
-            var ele = document.createElement('div');
+            var ele = {};
             var fn = jasmine.createSpy('fn');
             var presenter = new Presenter({
                     events: {
@@ -55,19 +54,17 @@ define(function (require) {
                     }
                 });
 
-            spyOn(presenter.model, 'set').and.callThrough();
             spyOn(presenter.model, 'fetch').and.callThrough();
             spyOn(presenter.view, 'set').and.callThrough();
             spyOn(presenter.view, 'render').and.callThrough();
 
-            presenter.enter(ele, path, query, params, options).then(function () {
+            presenter.enter(ele, path, query, options).then(function () {
                 expect(presenter.path).toEqual(path);
                 expect(presenter.options).toEqual(options);
                 expect(presenter.options).not.toBe(options);
                 expect(fn.calls.count()).toBe(1);
                 expect(presenter.view.set).toHaveBeenCalledWith(ele);
-                expect(presenter.model.set).toHaveBeenCalledWith(query, params, path);
-                expect(presenter.model.fetch).toHaveBeenCalled();
+                expect(presenter.model.fetch).toHaveBeenCalledWith(query);
                 expect(presenter.view.render).toHaveBeenCalled();
                 done();
             });
