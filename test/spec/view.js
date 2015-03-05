@@ -53,9 +53,9 @@ define(function (require) {
 
         it('should compile template only once', function () {
             var config = {
-                    templateMainTarget: 'targetMain',
-                    template: '<!-- target:targetMain -->hello'
-                };
+                templateMainTarget: 'targetMain',
+                template: '<!-- target:targetMain -->hello'
+            };
 
             var pass = true;
             try {
@@ -66,6 +66,19 @@ define(function (require) {
                 pass = false;
             }
             expect(pass).toBeTruthy();
+        });
+
+        it('should support templateConfig', function () {
+            var view = new View({
+                template: 'hello #{content}',
+                templateConfig: {
+                    variableOpen: '#{',
+                    variableClose: '}'
+                }
+            });
+
+            var str = view.template.render({content: 'tpl'});
+            expect(str).toEqual('hello tpl');
         });
 
         it('.set(ele) should set main element', function () {
@@ -87,6 +100,20 @@ define(function (require) {
             view.render(data);
 
             expect(main.innerHTML).toEqual(data.name);
+        });
+
+        it('.render() support templateData', function () {
+            var config = {
+                template: 'hello ${content}',
+                templateData: {
+                    content: 'static'
+                },
+                main: main
+            };
+
+            var view = new View(config);
+            view.render();
+            expect(main.innerHTML).toEqual('hello static');
         });
 
         it('.render() supoort targets', function () {
