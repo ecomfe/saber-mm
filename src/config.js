@@ -59,7 +59,7 @@ define(function (require, exports, module) {
          *
          * @type {Function}
          */
-        View: null 
+        View: null
     };
 
     /**
@@ -126,6 +126,17 @@ define(function (require, exports, module) {
 
         config.model = model;
     }
+
+    /**
+     * 获取配置信息
+     *
+     * @public
+     * @param {string} name name
+     * @return {*}
+     */
+    exports.get = function (name) {
+        return data[name];
+    };
 
     /**
      * 设置配置信息
