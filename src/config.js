@@ -92,7 +92,10 @@ define(function (require, exports, module) {
         view.router = view.router || data.router;
 
         // 添加通用模版数据
-        view._templateData = view._templateData || extend({}, data.templateData);
+        view.templateData = extend({}, data.templateData, view.templateData);
+
+        // 添加通用模版配置
+        view.templateConfig = extend({}, data.templateConfig, view.templateConfig);
 
         // 模版设置
         var template = view.template || '';

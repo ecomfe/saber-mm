@@ -140,7 +140,7 @@ define(function (require, exports, module) {
         }
 
         // 扩展通用模版数据
-        data = extend({}, this._templateData, data);
+        data = extend({}, this.templateData, data);
 
         /**
          * 渲染前事件
