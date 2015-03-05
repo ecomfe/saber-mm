@@ -26,8 +26,8 @@ define(function (require) {
             });
 
             it('async presenter', function (done) {
-                var config = require('./mock/presenter');
-                mm.create('spec/mock/presenter').then(function (presenter) {
+                var config = require('./mock/foo');
+                mm.create('spec/mock/foo').then(function (presenter) {
                     expect(presenter instanceof config.constructor).toBeTruthy();
                     done();
                 });
