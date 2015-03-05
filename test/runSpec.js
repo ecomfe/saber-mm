@@ -8,7 +8,7 @@ var path = require('path');
 var mm = require('../main');
 
 mm.config({
-    basePath: path.resolve(process.cwd(), 'test')
+    basePath: __dirname
 });
 
 loader.config({
