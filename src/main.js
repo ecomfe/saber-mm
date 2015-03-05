@@ -45,7 +45,8 @@ define(function (require) {
         }
 
         var Constructor;
-        configMgr.normal(config);
+        config = configMgr.normal(config);
+
         if (config.constructor !== Object) {
             Constructor = config.constructor;
         }

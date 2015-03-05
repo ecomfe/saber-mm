@@ -27,13 +27,15 @@ exports.config = function (options) {
  */
 exports.create = function (config) {
     var Constructor;
-    configMgr.normal(config);
+    config = configMgr.normal(config);
+
     if (config.constructor !== Object) {
         Constructor = config.constructor;
     }
     else {
         Constructor = require('./lib/Presenter');
     }
+
     return new Constructor(config);
 };
 
