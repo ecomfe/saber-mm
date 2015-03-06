@@ -4,6 +4,12 @@
  */
 
 var loader = require('amder');
+var path = require('path');
+var mm = require('../main');
+
+mm.config({
+    basePath: __dirname
+});
 
 loader.config({
     packages: [
@@ -17,3 +23,5 @@ loader.config({
 require('./spec/model');
 
 require('./spec/presenter');
+
+require('./spec/main');

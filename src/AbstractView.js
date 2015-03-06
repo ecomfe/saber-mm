@@ -7,7 +7,6 @@ define(function (require, exports, module) {
     var inherits = require('saber-lang').inherits;
     var extend = require('saber-lang').extend;
     var etpl = require('etpl');
-    var globalConfig = require('./config');
 
     var Abstract = require('./Abstract');
 
@@ -19,16 +18,11 @@ define(function (require, exports, module) {
      * @param {string|Array.<string>} str 模版
      */
     function compileTemplate(view, str) {
-        if (!Array.isArray(str)) {
-            str = [str];
+        if (Array.isArray(str)) {
+            str = str.join('');
         }
 
-        // 添加全局的模版
-        str = str.concat(globalConfig.template || []);
-
-        str = str.join('');
-
-        var config = extend({}, globalConfig.templateConfig || {});
+        var config = extend({}, view.templateConfig || {});
         var filters = {};
         if (config.filters) {
             filters = config.filters;
@@ -146,7 +140,7 @@ define(function (require, exports, module) {
         }
 
         // 扩展通用模版数据
-        data = extend({}, globalConfig.templateData, data);
+        data = extend({}, this.templateData, data);
 
         /**
          * 渲染前事件
