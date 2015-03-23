@@ -102,6 +102,18 @@ define(function (require) {
             expect(main.innerHTML).toEqual(data.name);
         });
 
+        it('template support templateData', function () {
+            var config = {
+                template: 'hello ${content}',
+                templateData: {
+                    content: 'static'
+                },
+                main: main
+            };
+            var view = new View(config);
+            expect(view.template.render()).toEqual('hello static');
+        });
+
         it('.render() support templateData', function () {
             var config = {
                 template: 'hello ${content}',

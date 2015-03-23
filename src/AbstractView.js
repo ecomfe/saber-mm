@@ -49,6 +49,9 @@ define(function (require, exports, module) {
         view.template = tplEngine;
         // 重载render以支持无target的情况
         view.template.render = function (name, data) {
+            // 扩展通用模版数据
+            data = extend({}, view.templateData, data);
+
             var res = '';
             // 如果只有一个参数 或者target为null
             // 则使用默认render
@@ -138,9 +141,6 @@ define(function (require, exports, module) {
         if (this.className) {
             this.main.className += ' ' + this.className;
         }
-
-        // 扩展通用模版数据
-        data = extend({}, this.templateData, data);
 
         /**
          * 渲染前事件
