@@ -14,7 +14,7 @@
   "edp": {
     "dependencies": {
       "saber-lang": "~2.0.0-alpha.1",
-      "saber-promise": "~2.0.0-alpha.1",
+      "saber-promise": "~2.0.0-alpha.3",
       "saber-emitter": "~2.0.0-alpha.1",
       "saber-dom": "~1.0.0",
       "saber-widget": "~1.0.0",
@@ -28,7 +28,7 @@
   "dependencies": {
     "etpl": "^3.0.0",
     "saber-lang": "^2.0.0-alpha.1",
-    "saber-promise": "^2.0.0-alpha.1",
+    "saber-promise": "^2.0.0-alpha.3",
     "saber-emitter": "^2.0.0-alpha.1"
   },
   "devDependencies": {
