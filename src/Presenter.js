@@ -6,9 +6,11 @@ define(function (require, exports, module) {
 
     var inherits = require('saber-lang').inherits;
     var extend = require('saber-lang').extend;
-    var bind = require('saber-lang').bind;
     var Abstract = require('./Abstract');
     var Resolver = require('saber-promise');
+
+    var View = require('./View');
+    var Model = require('./Model');
 
     /**
      * Presenter
@@ -39,7 +41,7 @@ define(function (require, exports, module) {
             Constructor = this.view.constructor;
         }
         else {
-            Constructor = require('./View');
+            Constructor = View;
         }
         this.view = new Constructor(this.view);
 
@@ -49,7 +51,7 @@ define(function (require, exports, module) {
             Constructor = this.model.constructor;
         }
         else {
-            Constructor = require('./Model');
+            Constructor = Model;
         }
         this.model = new Constructor(this.model);
 
@@ -99,7 +101,11 @@ define(function (require, exports, module) {
 
         this.emit('enter');
 
-        return this.model.fetch(query).then(bind(this.view.render, this.view));
+        var me = this;
+
+        return this.model.fetch(query).then(function (data) {
+            me.view.render(data)
+        });
     };
 
     /**

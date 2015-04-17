@@ -7,6 +7,7 @@ define(function (require, exports, module) {
     var Emitter = require('saber-emitter');
     var extend = require('saber-lang').extend;
     var bind = require('saber-lang').bind;
+    var inherits = require('saber-lang').inherits;
 
     /**
      * 绑定事件
@@ -48,8 +49,10 @@ define(function (require, exports, module) {
     function Abstract(options) {
         options = options || {};
         extend(this, options);
-        Emitter.mixin(this);
     }
+
+    // 使用继承而非mixin能提升性能
+    inherits(Abstract, Emitter);
 
     /**
      * 初始化

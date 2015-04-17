@@ -7,6 +7,15 @@ var extend = require('saber-lang').extend;
 var Resolver = require('saber-promise');
 var configMgr = require('./lib/config');
 
+var Presenter = require('./lib/Presenter');
+
+/**
+ * 字符串判断
+ *
+ * @inner
+ * @param {*} value 变量
+ * @return {boolean}
+ */
 function isString(value) {
     return Object.prototype.toString.call(value)
         === '[object String]';
@@ -49,7 +58,7 @@ exports.create = function (config) {
         Constructor = config.constructor;
     }
     else {
-        Constructor = require('./lib/Presenter');
+        Constructor = Presenter;
     }
 
     return Resolver.resolved(new Constructor(config));
