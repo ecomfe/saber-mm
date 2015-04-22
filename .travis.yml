@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - 0.10
+  - 0.11
 before_install:
   - git clone https://github.com/ecomfe/saber-dom.git test/dep/saber-dom/1.0.0
   - git clone https://github.com/ecomfe/saber-widget.git test/dep/saber-widget/1.0.0
