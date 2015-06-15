@@ -74,7 +74,7 @@ View
 
 ### redirect(url[, query[, options]])
 
-页面跳转，实际功能是由 [全局配置项](../README.md#config) 中 router 提供的
+页面跳转，实际功能是由 [全局配置项](../README.md#configoptions) 中 router 提供的
 
 * **url** `{string}` url
 * **query** `{Object=}` 查询条件
