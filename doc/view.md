@@ -10,16 +10,16 @@ View
 
 ## Configure
 
-`saber-mm`通过配置信息构建View对象，配置信息为`Object`类型，包含以下字段：
+`saber-mm` 通过配置信息构建 View 对象，配置信息为 `Object` 类型，包含以下字段：
 
-* **constructor** `{Function=}` 构造函数，默认为[saber-mm/View](../src/View.js)
-* **template** `{string|Array.<string>}` 模版字符串，具体请参考[etpl的模版语法](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md)
-* **templateMainTarget** `{string=}` 模版主target名称，用于初始渲染视图，如果不设置则默认模版中的第一个target
+* **constructor** `{Function=}` 构造函数，可以通过自定义该配置项来改变基类
+* **template** `{string|Array.<string>}` 模版字符串，具体请参考 [etpl 的模版语法](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md)
+* **templateMainTarget** `{string=}` 模版主 [target](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md#target) 名称，用于初始渲染视图，如果不设置则默认为模版中的第一个 target
 * **className** `{string=}` 容器元素附加的className
-* **events** `{Object=}` 事件配置，`key`为事件名称，`value`为事件回调函数，`this`指针指向View实例
-* **domEvents** `{Object=}` dom事件配置，`key`为事件名称＋元素选择器(以':'分割)，`value`为事件回调函数，比如`{ 'click: .add-btn' : function (el, e) {...} }`。回调函数的第一个参数为事件绑定的Dom元素，第二个参数为事件参数(`event`)，`this`指针指向View实例
+* **events** `{Object=}` 事件配置，`key` 为事件名称，`value` 为事件回调函数，`this` 指针指向 View 实例
+* **domEvents** `{Object=}` DOM 事件配置，`key` 为事件名称＋元素选择器(以':'分割)，`value` 为事件回调函数，比如 `{ 'click: .add-btn' : function (el, e) {...} }` 。回调函数的第一个参数为事件绑定的 DOM 元素，第二个参数为事件参数(`event`)，`this` 指针指向View实例
 
-除以上固有配置项外，还可通过给配置信息添加自定义属性的方式添加view的实例方法，实例方法的`this`指针指向当前的View实例
+除以上固有配置项外，还可通过给配置信息添加自定义属性的方式添加 View 的实例方法，实例方法的 `this` 指针指向当前的 View 实例
 
 配置实例如下：
 
@@ -50,31 +50,31 @@ View
 
 ### template
 
-模版引擎，具体请参考[etpl的API说明](https://github.com/ecomfe/etpl/blob/master/doc/api.md)
+模版引擎对象，可以通过该对象的 `render` 方法进行模版的渲染，具体请参考 [etpl 的API说明](https://github.com/ecomfe/etpl/blob/master/doc/api.md)
 
 ## Methods
 
-**注：**可用通过配置信息重载View已有的实例方法，达到更进一步的View自定义，重载前请参考原始方法的实现
+**注：**可用通过配置信息重载 View 已有的实例方法，达到更进一步的自定义，重载前请参考原始方法的实现
 
 ### query(selector[, context])
 
-查找视图中的DOM元素
+查找视图中的 DOM 元素
 
 * **selector** `{string}` 元素选择器
-* **context** `{string=}` 上下文，可选，默认为View的主元素
-* _return_ `{?HTMLElement}` DOM元素
+* **context** `{string=}` 上下文，可选，默认为 View 的容器元素
+* _return_ `{?HTMLElement}` DOM 元素
 
 ### queryAll(selector[, context])
 
-查找视图中所有符合的DOM元素
+查找视图中所有符合的 DOM 元素
 
 * **selector** `{string}` 元素选择器
-* **context** `{string=}` 上下文，可选，默认为View的主元素
-* _return_ `{Array.<HTMLElement>}` DOM元素数组
+* **context** `{string=}` 上下文，可选，默认为 View 的容器元素
+* _return_ `{Array.<HTMLElement>}` DOM 元素数组
 
 ### redirect(url[, query[, options]])
 
-页面跳转
+页面跳转，实际功能是由 [全局配置项](../README.md#config) 中 router 提供的
 
 * **url** `{string}` url
 * **query** `{Object=}` 查询条件
@@ -86,23 +86,21 @@ View
 
 注册DOM事件
 
-* **ele** `{HTMLElement}` DOM元素
+* **ele** `{HTMLElement}` DOM 元素
 * **type** `{string}` 事件名称
 * **selector** `{string=}` 元素选择器，可选
-* **fn** `{Function}` 事件处理函数，`this`指向View实例
+* **fn** `{Function}` 事件处理函数，`this` 指向 View 实例
 
 ### removeDomEvent(ele, type[, selector], fn)
 
 卸载DOM事件
 
-* **ele** `{HTMLElement}` DOM元素
+* **ele** `{HTMLElement}` DOM 元素
 * **type** `{string}` 事件名称
 * **selector** `{string=}` 元素选择器，可选
 * **fn** `{Function}` 事件处理函数
 
 ## Events
-
-预定义了以下事件，具体会触发哪些事件由上层框架的生命周期管理决定
 
 ### init
 
