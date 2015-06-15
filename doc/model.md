@@ -43,7 +43,7 @@ Model
 
 ### init
 
-初始化事件，在创建View实例时触发
+初始化事件，在创建 Model 实例时触发
 
 ## Methods
 
@@ -52,7 +52,7 @@ Model
 获取数据，**虚方法**，使用时需要具体实现。Presenter 加载时会调用此方法进行数据初始化，并将结果作为渲染视图的数据
 
 * **query** `{Object}` 查询条件
-* _return_ `{Promise}` [Promise对象](https://github.com/ecomfe/saber-promise/blob/master/doc/promise.md)
+* _return_ `{Promise}` [Promise 对象](https://github.com/ecomfe/saber-promise/blob/master/doc/promise.md)
 
 ### set(name, value)
 

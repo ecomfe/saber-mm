@@ -77,14 +77,14 @@ Presenter
 * **url** `{string}` url
 * **query** `{Object=}` 查询条件
 * **options** `{options=}` 跳转参数
-    * **force** `{boolean=}` 强制跳转（相同的URL默认不跳转）
-    * **noCache** `{boolean=}` 禁用页面的cache
+    * **force** `{boolean=}` 强制跳转（相同的 URL 默认不跳转）
+    * **noCache** `{boolean=}` 禁用页面的 cache
 
 ## Events
 
 ### init
 
-初始化事件，在创建Presenter实例时触发
+初始化事件，在创建 Presenter 实例时触发
 
 ### enter
 
@@ -108,7 +108,7 @@ Presenter
 
 ### leave
 
-离开事件，presenter切换时触发
+离开事件，页面切换时触发
 
 ### sleep
 

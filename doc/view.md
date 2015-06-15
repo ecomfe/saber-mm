@@ -79,8 +79,8 @@ View
 * **url** `{string}` url
 * **query** `{Object=}` 查询条件
 * **options** `{options=}` 跳转参数
-    * **force** `{boolean=}` 强制跳转（相同的URL默认不跳转）
-    * **noCache** `{boolean=}` 禁用页面的cache
+    * **force** `{boolean=}` 强制跳转（相同的 URL 默认不跳转）
+    * **noCache** `{boolean=}` 禁用页面的 cache
 
 ### addDomEvent(ele, type[, selector], fn)
 
@@ -104,7 +104,7 @@ View
 
 ### init
 
-初始化事件，在创建View实例时触发
+初始化事件，在创建 View 实例时触发
 
 ### beforerender
 
@@ -120,7 +120,7 @@ View
 
 ### ready
 
-就绪事件，此时页面已完成渲染，可在此事件中进行注册DOM事件等操作
+就绪事件，此时页面已完成渲染，可在此事件中进行 DOM 事件注册等操作
 
 ### leave
 
@@ -128,8 +128,8 @@ View
 
 ### revived
 
-唤醒事件，进入缓存的页面时触发，对应于正常情况的[ready](#ready)事件
+唤醒事件，进入缓存的页面时触发，对应于正常情况的 [ready](#ready) 事件
 
 ### sleep 
 
-休眠事件，离开缓存的页面时触发，对应于正常情况的[leave](#leave)事件
+休眠事件，离开缓存的页面时触发，对应于正常情况的 [leave](#leave) 事件
