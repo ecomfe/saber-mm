@@ -1,5 +1,7 @@
-saber-mm [![Build Status](https://travis-ci.org/ecomfe/saber-mm.svg)](https://travis-ci.org/ecomfe/saber-mm)
+saber-mm
 ===
+
+![Bower version](https://img.shields.io/bower/v/saber-mm.svg?style=flat-square) [![NPM version](https://img.shields.io/npm/v/saber-mm.svg?style=flat-square)](https://npmjs.org/package/saber-mm) [![Build Status](https://img.shields.io/travis/ecomfe/saber-mm.svg?style=flat-square)](https://travis-ci.org/ecomfe/saber-mm) [![License](https://img.shields.io/npm/l/saber-mm.svg?style=flat-square)](./LICENSE) [![EFE Mobile Team](https://img.shields.io/badge/EFE-Mobile_Team-blue.svg?style=flat-square)](http://efe.baidu.com)
 
 适用于移动端的 `MVP` 实现。并不包含完整的路由功能和生命周期管理，如需要可直接使用的 `MVP` 框架请考虑以下的模块：
 
