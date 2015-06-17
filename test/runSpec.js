@@ -20,6 +20,8 @@ loader.config({
     ]
 });
 
+require('./spec/abstractView');
+
 require('./spec/model');
 
 require('./spec/presenter');
