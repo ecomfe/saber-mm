@@ -24,7 +24,7 @@
   "scripts": {
     "test": "jasmine-node --verbose test/runSpec.js && phantomjs test/run-jasmine.js test/runner.html"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "etpl": "^3.0.0",
     "saber-emitter": "^2.0.0-beta.1",
