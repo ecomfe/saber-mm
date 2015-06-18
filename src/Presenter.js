@@ -104,7 +104,7 @@ define(function (require, exports, module) {
         var me = this;
 
         return this.model.fetch(query).then(function (data) {
-            me.view.render(data)
+            me.view.render(data);
         });
     };
 

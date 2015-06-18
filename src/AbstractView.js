@@ -152,8 +152,7 @@ define(function (require, exports, module) {
          */
         this.emit('beforerender', data);
 
-        this.main.innerHTML =
-            this.template.render(this.templateMainTarget, data);
+        this.main.innerHTML = this.template.render(this.templateMainTarget, data);
 
         /**
          * 渲染后事件
