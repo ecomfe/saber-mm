@@ -46,7 +46,7 @@ define(function (require) {
             var path = '/index';
             var query = {filter: 'www'};
             var options = {noCache: true};
-            var ele = {};
+            var ele = {className: '', innerHTML: ''};
             var fn = jasmine.createSpy('fn');
             var presenter = new Presenter({
                     events: {

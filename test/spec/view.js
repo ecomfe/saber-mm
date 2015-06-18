@@ -6,7 +6,7 @@
 define(function (require) {
 
     var dom = require('saber-dom');
-    var Abstract = require('saber-mm/Abstract');
+    var Abstract = require('saber-mm/AbstractView');
     var View = require('saber-mm/View');
 
     var widget = require('saber-widget');
@@ -49,98 +49,6 @@ define(function (require) {
         it('should inherited abstract', function () {
             var view = new View();
             expect(view instanceof Abstract).toBeTruthy();
-        });
-
-        it('should compile template only once', function () {
-            var config = {
-                templateMainTarget: 'targetMain',
-                template: '<!-- target:targetMain -->hello'
-            };
-
-            var pass = true;
-            try {
-                var view = new View(config);
-                view = new View(config);
-            }
-            catch (e) {
-                pass = false;
-            }
-            expect(pass).toBeTruthy();
-        });
-
-        it('should support templateConfig', function () {
-            var view = new View({
-                template: 'hello #{content}',
-                templateConfig: {
-                    variableOpen: '#{',
-                    variableClose: '}'
-                }
-            });
-
-            var str = view.template.render({content: 'tpl'});
-            expect(str).toEqual('hello tpl');
-        });
-
-        it('.set(ele) should set main element', function () {
-            var view = new View();
-
-            view.set(main);
-
-            expect(view.main).toBe(main);
-        });
-
-        it('.render() should render view', function () {
-            var data = {name: 'treelite'};
-            var tpl = '${name}';
-            var view = new View({
-                    template: tpl,
-                    main: main,
-                });
-
-            view.render(data);
-
-            expect(main.innerHTML).toEqual(data.name);
-        });
-
-        it('template support templateData', function () {
-            var config = {
-                template: 'hello ${content}',
-                templateData: {
-                    content: 'static'
-                },
-                main: main
-            };
-            var view = new View(config);
-            expect(view.template.render()).toEqual('hello static');
-        });
-
-        it('.render() support templateData', function () {
-            var config = {
-                template: 'hello ${content}',
-                templateData: {
-                    content: 'static'
-                },
-                main: main
-            };
-
-            var view = new View(config);
-            view.render();
-            expect(main.innerHTML).toEqual('hello static');
-        });
-
-        it('.render() supoort targets', function () {
-            var data = {name: 'treelite'};
-            var tpl = '<!-- target:main -->${name}<!-- target:test -->test${name}';
-            var view = new View({
-                    template: tpl,
-                    templateMainTarget: 'main',
-                    main: main,
-                });
-
-            view.render(data);
-            expect(main.innerHTML).toEqual(data.name);
-
-            expect(view.template.render('test', data)).toEqual('test' + data.name);
         });
 
         it('.ready() should bind dom events', function (done) {

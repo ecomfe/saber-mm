@@ -138,7 +138,9 @@ define(function (require, exports, module) {
             return;
         }
 
-        if (this.className) {
+        // 设置className，避免重复
+        var classes = this.main.className.split(/\s+/);
+        if (this.className && classes.indexOf(this.className) < 0) {
             this.main.className += ' ' + this.className;
         }
 
@@ -150,8 +152,7 @@ define(function (require, exports, module) {
          */
         this.emit('beforerender', data);
 
-        this.main.innerHTML =
-            this.template.render(this.templateMainTarget, data);
+        this.main.innerHTML = this.template.render(this.templateMainTarget, data);
 
         /**
          * 渲染后事件
