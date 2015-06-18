@@ -10,9 +10,9 @@
     }
   ],
   "dependencies": {
-    "saber-lang": "~2.0.0-beta.1",
-    "saber-promise": "~2.0.0-beta.1",
-    "saber-emitter": "~2.0.0-beta.1",
+    "saber-lang": "~2.0.0",
+    "saber-promise": "~2.0.0",
+    "saber-emitter": "~2.0.0",
     "saber-dom": "~1.0.0",
     "saber-widget": "~1.0.0",
     "etpl": "~3.0.0"
