@@ -3,9 +3,9 @@
  * @author treelite(c.xinle@gmail.com)
  */
 
-var extend = require('saber-lang').extend;
 var Resolver = require('saber-promise');
 var configMgr = require('./lib/config');
+var path = require('path');
 
 var Presenter = require('./lib/Presenter');
 
@@ -19,6 +19,32 @@ var Presenter = require('./lib/Presenter');
 function isString(value) {
     return Object.prototype.toString.call(value)
         === '[object String]';
+}
+
+/**
+ * Presenter 配置文件缓存
+ *
+ * @type {Object}
+ */
+var configCaches = {};
+
+/**
+ * 加载 Presenter 配置文件
+ *
+ * @param {string} name 配置文件地址
+ * @return {Object}
+ */
+function loadConfig(name) {
+    var config = configCaches[name];
+
+    if (!config) {
+        var base = configMgr.get('basePath') || process.cwd();
+        var file = path.resolve(base, name);
+        config = require(file);
+        configCaches[name] = config;
+    }
+
+    return config;
 }
 
 /**
@@ -45,10 +71,7 @@ exports.config = function (options) {
 exports.create = function (config) {
     // 动态加载Presenter配置
     if (isString(config)) {
-        var path = require('path');
-        var base = configMgr.get('basePath') || process.cwd();
-        config = path.resolve(base, config);
-        return exports.create(require(config));
+        return exports.create(loadConfig(config));
     }
 
     var Constructor;
