@@ -9,7 +9,7 @@ saber-mm
 * [saber-rainbow](https://github.com/ecomfe/saber-rainbow)，浏览器端的多页面运行环境
 * [rebas](https://github.com/ecomfe/rebas)，node 运行环境，可与 `saber-firework` 或者 `saber-rainbow` 配合完成同构化的应用开发
 
-模版引擎使用 [etpl] (http://ecomfe.github.io/etpl/)，相关模版语法请参考[这里](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md)
+模版引擎使用 [etpl](http://ecomfe.github.io/etpl/)，相关模版语法请参考[这里](https://github.com/ecomfe/etpl/blob/master/doc/syntax.md)
 
 ## Usage
 
