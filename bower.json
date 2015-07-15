@@ -10,7 +10,7 @@
     }
   ],
   "dependencies": {
-    "saber-lang": "~2.0.0",
+    "saber-lang": "~2.0.1",
     "saber-promise": "~2.0.0",
     "saber-emitter": "~2.0.0",
     "saber-dom": "~1.0.0",
