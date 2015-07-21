@@ -100,9 +100,9 @@ define(function (require) {
             expect(main.innerHTML).toEqual('hello static');
         });
 
-        it('.render() supoort targets', function () {
+        it('.render() support default targets', function () {
             var data = {name: 'treelite'};
-            var tpl = '<!-- target:main -->${name}<!-- target:test -->test${name}';
+            var tpl = '<!-- target:test -->test${name}<!-- target:main -->${name}';
             var view = new View({
                     template: tpl,
                     templateMainTarget: 'main',
@@ -140,6 +140,29 @@ define(function (require) {
             view.render();
 
             expect(main.className).toEqual(clsName);
+        });
+
+        describe('template', function () {
+            it('with target', function () {
+                var data = {name: 'treelite'};
+                var tpl = 'Hello ${name}<!-- target: test -->${name}<!-- target: test2 -->Kill ${name}';
+                var view = new View({
+                        template: tpl,
+                        main: main,
+                    });
+
+                var str = view.template.render('test', data);
+                expect(str).toEqual(data.name);
+
+                var str = view.template.render(data);
+                expect(str).toEqual('Hello ' + data.name);
+
+                var str = view.template.render('test2');
+                expect(str).toEqual('Kill ');
+
+                var str = view.template.render(null, data);
+                expect(str).toEqual('Hello ' + data.name);
+            });
         });
     });
 });
