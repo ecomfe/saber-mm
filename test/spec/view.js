@@ -12,6 +12,8 @@ define(function (require) {
     var widget = require('saber-widget');
     var Widget = require('saber-widget/Widget');
 
+    var inherits = require('saber-lang').inherits;
+
     function Slider() {
         Widget.apply(this, arguments);
     }
@@ -72,6 +74,42 @@ define(function (require) {
             setTimeout(function () {
                 expect(fn.calls.any()).toBeTruthy();
                 expect(fn.calls.argsFor(0)[0]).toBe(ele);
+                done();
+            }, 0);
+        });
+
+        it('merge domEvents', function (done) {
+            var fn1 = jasmine.createSpy('fn');
+            var fn2 = jasmine.createSpy('fn');
+            var tpl = '<div class="box"><div class="inner"></div></div>';
+
+            function Sub(options) {
+                View.call(this, options);
+            }
+
+            Sub.prototype.domEvents = {
+                'click: .box': fn1
+            };
+
+            inherits(Sub, View);
+
+            var sub = new Sub({
+                main: main,
+                template: tpl,
+                domEvents: {
+                    'click: .box': fn2
+                }
+            });
+
+            sub.render();
+            sub.ready();
+
+            var ele = dom.query('.box', main);
+            fireEvent(dom.query('.inner', main), 'click');
+
+            setTimeout(function () {
+                expect(fn1).toHaveBeenCalled();
+                expect(fn2).toHaveBeenCalled();
                 done();
             }, 0);
         });

@@ -41,16 +41,24 @@ define(function (require) {
      * @param {View} view 视图对象
      */
     function bindDomEvents(view) {
-        var type;
-        var selector;
-        var fn;
         var events = view.domEvents || {};
-        Object.keys(events).forEach(function (name) {
-            fn = events[name];
+
+        function bindEvent(view, name, fn) {
             name = name.split(':');
-            type = name[0].trim();
-            selector = name[1] ? name[1].trim() : undefined;
+            var type = name[0].trim();
+            var selector = name[1] ? name[1].trim() : undefined;
             view.addDomEvent(view.main, type, selector, fn);
+        }
+
+        Object.keys(events).forEach(function (name) {
+            var fns = events[name];
+            if (!Array.isArray(fns)) {
+                fns = [fns];
+            }
+
+            for (var i = 0; i < fns.length; i++) {
+                bindEvent(view, name, fns[i]);
+            }
         });
     }
 

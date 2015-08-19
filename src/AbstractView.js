@@ -7,6 +7,7 @@ define(function (require, exports, module) {
     var inherits = require('saber-lang').inherits;
     var extend = require('saber-lang').extend;
     var etpl = require('etpl');
+    var combine = require('./util/combine');
 
     var Abstract = require('./Abstract');
 
@@ -85,6 +86,12 @@ define(function (require, exports, module) {
     function View(options) {
 
         options = options || {};
+
+        var domEvents = options.domEvents;
+        if (domEvents) {
+            this.domEvents = combine(this.domEvents, domEvents);
+            delete  options.domEvents;
+        }
 
         Abstract.call(this, options);
 
