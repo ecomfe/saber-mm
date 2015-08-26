@@ -140,6 +140,10 @@ define(function (require) {
     function addEvent(eventHost, type) {
         var fn = eventHost.commonEventHandler;
         var plugin = getPlugin(type);
+        var handlers = [];
+
+        handlers.delegateCount = 0;
+        eventHost.handlers[type] = handlers;
 
         if (plugin) {
             plugin.on(eventHost.ele, type, fn);
@@ -157,6 +161,10 @@ define(function (require) {
      * @param {string} type 事件类型
      */
     function removeEvent(eventHost, type) {
+        if (!eventHost.handlers[type]) {
+            return;
+        }
+
         var fn = eventHost.commonEventHandler;
         var plugin = getPlugin(type);
 
@@ -166,6 +174,8 @@ define(function (require) {
         else {
             eventHost.ele.removeEventListener(type, fn, false);
         }
+
+        eventHost.handlers[type] = null;
     }
 
     /**
@@ -257,15 +267,14 @@ define(function (require) {
 
         var handlers = this.handlers[type];
         if (!handlers) {
-            handlers = this.handlers[type] = [];
-            handlers.delegateCount = 0;
             addEvent(this, type);
+            handlers = this.handlers[type];
         }
 
         var handler = {
-                fn: fn,
-                selector: selector
-            };
+            fn: fn,
+            selector: selector
+        };
 
         if (selector) {
             handlers.delegateCount++;

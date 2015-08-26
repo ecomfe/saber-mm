@@ -164,6 +164,20 @@ define(function (require) {
                 }, 0);
             });
 
+            it('bind event after unbind', function (done) {
+                var fn = jasmine.createSpy('fn');
+                eventHelper.on(ele, 'click', fn);
+                eventHelper.off(ele, 'click', fn);
+                eventHelper.on(ele, 'click', fn);
+
+                fireEvent(ele, 'click');
+
+                setTimeout(function () {
+                    expect(fn.calls.count()).toBe(1);
+                    done();
+                }, WAIT);
+            });
+
         });
 
         describe('.one(ele, selector, fn)', function () {
@@ -181,6 +195,22 @@ define(function (require) {
                         done();
                     }, WAIT);
                 }, 0);
+            });
+
+            it('once again', function (done) {
+                var fn = jasmine.createSpy('fn');
+
+                eventHelper.one(ele, 'click', fn);
+                fireEvent(ele, 'click');
+
+                setTimeout(function () {
+                    eventHelper.one(ele, 'click', fn);
+                    fireEvent(ele, 'click');
+                    setTimeout(function () {
+                        expect(fn.calls.count()).toBe(2);
+                        done();
+                    }, WAIT);
+                }, WAIT);
             });
 
         });
